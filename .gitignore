@@ -1,6 +1,14 @@
+.DS_Store
+target
+bin
 *.class
+*.log
+*.iml
+.idea
+.lucene
+.infinispan
 
 # Package Files #
-*.jar
+# *.jar
 *.war
 *.ear
