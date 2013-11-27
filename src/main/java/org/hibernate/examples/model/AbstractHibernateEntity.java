@@ -2,6 +2,7 @@ package org.hibernate.examples.model;
 
 import org.hibernate.examples.HibernateEntity;
 import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.ToStringHelper;
 
 /**
  * org.hibernate.examples.model.AbstractHibernateEntity
@@ -51,9 +52,9 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     }
 
     @Override
-    public StringBuilder buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .append("id=").append(getId()).append(",");
+                .add("id", getId());
     }
 
     private static final long serialVersionUID = 6661386933952675946L;

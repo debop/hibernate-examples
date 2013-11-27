@@ -1,6 +1,7 @@
 package org.hibernate.examples.model;
 
 import org.hibernate.examples.ValueObject;
+import org.hibernate.examples.utils.ToStringHelper;
 
 /**
  * org.hibernate.examples.model.AbstractValueObject
@@ -9,7 +10,6 @@ import org.hibernate.examples.ValueObject;
  * @since 2013. 11. 27. 오후 2:39
  */
 public abstract class AbstractValueObject implements ValueObject {
-
 
     @Override
     public boolean equals(Object obj) {
@@ -21,10 +21,8 @@ public abstract class AbstractValueObject implements ValueObject {
         return buildStringHelper().toString();
     }
 
-    protected StringBuilder buildStringHelper() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getName()).append("#");
-        return sb;
+    protected ToStringHelper buildStringHelper() {
+        return ToStringHelper.create(this);
     }
 
     private static final long serialVersionUID = 529523546260095342L;

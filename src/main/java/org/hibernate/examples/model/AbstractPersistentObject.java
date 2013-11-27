@@ -17,6 +17,7 @@ public abstract class AbstractPersistentObject extends AbstractValueObject imple
 
     @Override
     public boolean isPersisted() {
+
         return persisted;
     }
 

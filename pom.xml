@@ -31,13 +31,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Memcached -->
-        <dependency>
-            <groupId>com.googlecode.xmemcached</groupId>
-            <artifactId>xmemcached</artifactId>
-            <version>1.4.3</version>
-        </dependency>
-
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -108,6 +101,14 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.3.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Memcached for Hibernate 2nd Cache -->
+        <dependency>
+            <groupId>com.googlecode.xmemcached</groupId>
+            <artifactId>xmemcached</artifactId>
+            <version>1.4.3</version>
             <scope>test</scope>
         </dependency>
 
