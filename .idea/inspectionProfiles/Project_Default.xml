@@ -15,6 +15,7 @@
       <option name="processLiterals" value="true" />
       <option name="processComments" value="true" />
     </inspection_tool>
+    <inspection_tool class="SpringJavaAutowiringInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SynchronizationOnLocalVariableOrMethodParameter" enabled="true" level="INFO" enabled_by_default="true">
       <option name="reportLocalVariables" value="true" />
       <option name="reportMethodParameters" value="true" />
