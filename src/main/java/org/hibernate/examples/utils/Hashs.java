@@ -29,7 +29,7 @@ public final class Hashs {
      * @param x 해시코드를 생성할 객체
      * @return 해시코드
      */
-    private static int computeInternal(final Object x) {
+    private static int hashInternal(final Object x) {
         return (x != null) ? x.hashCode() : NULL_VALUE;
     }
 
@@ -39,13 +39,13 @@ public final class Hashs {
      * @param objs 해쉬코드를 생성할 객체 배열
      * @return 조합된 Hash code
      */
-    public static int compute(final Object... objs) {
+    public static int hash(final Object... objs) {
         if (objs == null || objs.length == 0)
             return NULL_VALUE;
 
         int hash = NULL_VALUE;
         for (Object x : objs) {
-            hash = hash * FACTOR + computeInternal(x);
+            hash = hash * FACTOR + hashInternal(x);
         }
         return hash;
     }

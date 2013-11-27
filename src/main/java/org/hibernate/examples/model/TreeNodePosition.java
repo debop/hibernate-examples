@@ -39,7 +39,7 @@ public class TreeNodePosition extends AbstractValueObject {
 
     @Override
     public int hashCode() {
-        return Hashs.compute(level, order);
+        return Hashs.hash(level, order);
     }
 
     @Override

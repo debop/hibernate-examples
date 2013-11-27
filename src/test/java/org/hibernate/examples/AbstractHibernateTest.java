@@ -1,0 +1,19 @@
+package org.hibernate.examples;
+
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.examples.conf.HibernateConfiguration;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+/**
+ * org.hibernate.examples.AbstractHibernateTest
+ *
+ * @author 배성혁 sunghyouk.bae@gmail.com
+ * @since 2013. 11. 27. 오후 5:37
+ */
+@Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { HibernateConfiguration.class })
+public class AbstractHibernateTest {
+}

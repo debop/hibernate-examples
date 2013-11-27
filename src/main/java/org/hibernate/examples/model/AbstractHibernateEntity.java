@@ -30,7 +30,7 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     @Override
     public int hashCode() {
         return (getId() == null) ? System.identityHashCode(this)
-                : Hashs.compute(getId());
+                : Hashs.hash(getId());
     }
 
     private boolean hasSameNonDefaultIdAs(HibernateEntity<TId> entity) {
@@ -43,9 +43,9 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
 
     private boolean hasSameBusinessSignature(HibernateEntity<TId> other) {
         boolean notNull = (other != null);
-        int hash = (getId() != null) ? Hashs.compute(getId()) : hashCode();
+        int hash = (getId() != null) ? Hashs.hash(getId()) : hashCode();
         if (notNull) {
-            int otherHash = (other.getId() != null) ? Hashs.compute(other.getId()) : other.hashCode();
+            int otherHash = (other.getId() != null) ? Hashs.hash(other.getId()) : other.hashCode();
             return hash == otherHash;
         }
         return false;
