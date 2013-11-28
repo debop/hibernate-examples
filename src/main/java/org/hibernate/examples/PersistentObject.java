@@ -10,7 +10,7 @@ public interface PersistentObject extends ValueObject {
 
     boolean isPersisted();
 
-    void onPersist();
+    void onSave();
 
     void onLoad();
 }

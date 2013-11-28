@@ -23,7 +23,7 @@ public abstract class AbstractPersistentObject extends AbstractValueObject imple
 
     @Override
     @PostPersist
-    public void onPersist() {
+    public void onSave() {
         persisted = true;
     }
 
