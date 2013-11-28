@@ -1,23 +1,33 @@
-package org.hibernate.examples;
+package org.hibernate.examples.mapping;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
+import org.hibernate.examples.HibernateHSqlConfiguration;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 /**
- * org.hibernate.examples.AbstractHibernateTest
+ * org.hibernate.examples.mapping.HibernateMappingTest
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 2013. 11. 27. 오후 5:37
+ * @since 2013. 11. 28. 오후 3:42
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { HibernateHSqlConfiguration.class })
-public abstract class AbstractHibernateTest {
+public class HibernateMappingTest {
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    SessionFactory sessionFactory;
+
+    @Test
+    public void mappingTest() throws Exception {
+        assertThat(sessionFactory).isNotNull();
+    }
+
 }

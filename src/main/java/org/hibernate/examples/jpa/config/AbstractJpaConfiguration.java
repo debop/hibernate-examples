@@ -63,11 +63,12 @@ public abstract class AbstractJpaConfiguration {
         props.put(Environment.FORMAT_SQL, "true");
         props.put(Environment.HBM2DDL_AUTO, "create"); // create | spawn | spawn-drop | update | validate | none
 
-        props.put(Environment.CACHE_REGION_PREFIX, "hibernate:");
         props.put(Environment.SHOW_SQL, "true");
         props.put(Environment.RELEASE_CONNECTIONS, ConnectionReleaseMode.ON_CLOSE);
         props.put(Environment.AUTOCOMMIT, "true");
         props.put(Environment.STATEMENT_BATCH_SIZE, "100");
+
+        //        props.put(Environment.CACHE_REGION_PREFIX, "hibernate:");
 
         // NOTE: Naming Strategy (JPA 에서는 HibernatePersistence 를 사용해야 합니다)
         // props.put(HibernatePersistence.NAMING_STRATEGY, getNamingStrategy());

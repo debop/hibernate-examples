@@ -1,35 +1,37 @@
-package org.hibernate.examples.hibernate.config;
+package org.hibernate.examples.mapping.simple;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.Hashs;
 import org.hibernate.examples.utils.ToStringHelper;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * org.hibernate.examples.hibernate.config.Account
+ * org.hibernate.examples.mapping.simple.SimpleEntity
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 2013. 11. 28. 오전 9:44
+ * @since 2013. 11. 28. 오후 3:57
  */
 @Entity
+@DynamicInsert
+@DynamicUpdate
 @Getter
 @Setter
-public class Account extends AbstractHibernateEntity<Long> {
+public class SimpleEntity extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private double cashBalance;
-
-    @Column(name = "AccountName", nullable = false, length = 32)
     private String name;
+
+    private String description;
 
     @Override
     public int hashCode() {
@@ -39,9 +41,10 @@ public class Account extends AbstractHibernateEntity<Long> {
     @Override
     public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                    .add("id", id)
-                    .add("name", name);
+                    .add("name", name)
+                    .add("description", description);
+
     }
 
-    private static final long serialVersionUID = 8633146002860863953L;
+    private static final long serialVersionUID = 3250454084254905337L;
 }

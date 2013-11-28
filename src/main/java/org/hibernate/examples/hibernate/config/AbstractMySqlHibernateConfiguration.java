@@ -9,23 +9,23 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * PostgreSql DB를 사용하는 Spring 용 Hibernate 환경설정 정보
+ * MySQL DB를 사용하는 Spring 용 Hibernate 환경설정 정보
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 2013. 11. 28. 오후 1:48
+ * @since 2013. 11. 28. 오후 1:36
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractPostgreSqlConfiguration extends AbstractHibernateConfiguration {
+public abstract class AbstractMySqlHibernateConfiguration extends AbstractHibernateConfiguration {
 
-    public static final String DRIVER_CLASS_POSTGRESQL = "org.postgresql.Driver";
-    public static final String DIALECT_POSTGRESQL = "org.hibernate.dialect.PostgreSQL82Dialect";
+    public static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
+    public static final String DIALECT_MYSQL = "org.hibernate.dialect.MySQL5InnoDBDialect";
 
     @Bean
     @Override
     public DataSource dataSource() {
-        return buildDataSource(DRIVER_CLASS_POSTGRESQL,
-                               "jdbc:postgresql://localhost/" + getDatabaseName() + "?Set=UTF8",
+        return buildDataSource(DRIVER_CLASS_MYSQL,
+                               "jdbc:mysql://localhost/" + getDatabaseName(),
                                "root",
                                "root");
     }
@@ -33,7 +33,8 @@ public abstract class AbstractPostgreSqlConfiguration extends AbstractHibernateC
     @Override
     public Properties hibernateProperties() {
         Properties props = super.hibernateProperties();
-        props.put(Environment.DIALECT, DIALECT_POSTGRESQL);
+        props.put(Environment.DIALECT, DIALECT_MYSQL);
         return props;
     }
+
 }

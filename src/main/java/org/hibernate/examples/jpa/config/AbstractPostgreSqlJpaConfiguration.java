@@ -16,7 +16,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractPostgreSqlConfiguration extends AbstractJpaConfiguration {
+public abstract class AbstractPostgreSqlJpaConfiguration extends AbstractJpaConfiguration {
 
     public static final String DRIVER_CLASS_POSTGRESQL = "org.postgresql.Driver";
     public static final String DIALECT_POSTGRESQL = "org.hibernate.dialect.PostgreSQL82Dialect";

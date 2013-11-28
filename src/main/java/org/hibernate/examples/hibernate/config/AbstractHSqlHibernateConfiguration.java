@@ -15,7 +15,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractHSqlConfiguration extends AbstractHibernateConfiguration {
+public abstract class AbstractHSqlHibernateConfiguration extends AbstractHibernateConfiguration {
 
     public static final String DRIVER_CLASS_HSQL = "org.hsqldb.jdbcDriver";
     public static final String DIALECT_HSQL = "org.hibernate.dialect.HSQLDialect";

@@ -16,7 +16,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractMySqlConfiguration extends AbstractJpaConfiguration {
+public abstract class AbstractMySqlJpaConfiguration extends AbstractJpaConfiguration {
 
     public static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
     public static final String DIALECT_MYSQL = "org.hibernate.dialect.MySQL5InnoDBDialect";
