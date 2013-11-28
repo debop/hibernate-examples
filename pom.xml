@@ -102,19 +102,16 @@
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
             <version>${querydsl.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa-codegen</artifactId>
             <version>${querydsl.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- tomcat connection pool 성능이 좋다. -->
