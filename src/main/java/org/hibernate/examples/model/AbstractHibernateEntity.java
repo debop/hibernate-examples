@@ -48,7 +48,7 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     @Override
     public int hashCode() {
         return (getId() == null) ? System.identityHashCode(this)
-                                 : Hashs.hash(getId());
+                : Hashs.hash(getId());
     }
 
     private boolean hasSameNonDefaultIdAs(HibernateEntity<TId> entity) {
@@ -70,9 +70,9 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     }
 
     @Override
-    public ToStringHelper buildStringHelper() {
+    protected ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                    .add("id", getId());
+                .add("id", getId());
     }
 
     private static final long serialVersionUID = 6661386933952675946L;
