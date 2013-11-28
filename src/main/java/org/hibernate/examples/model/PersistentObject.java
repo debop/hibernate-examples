@@ -1,7 +1,7 @@
-package org.hibernate.examples;
+package org.hibernate.examples.model;
 
 /**
- * org.hibernate.examples.PersistentObject
+ * org.hibernate.examples.model.PersistentObject
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 2:37

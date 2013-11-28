@@ -1,6 +1,5 @@
 package org.hibernate.examples.model;
 
-import org.hibernate.examples.ValueObject;
 import org.hibernate.examples.utils.ToStringHelper;
 
 /**

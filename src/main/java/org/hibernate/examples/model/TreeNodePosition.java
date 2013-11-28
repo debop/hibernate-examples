@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
- * org.hibernate.examples.model.TreeNodePosition
+ * 계층형 구조 엔티티의 TREE 상에서의 위치를 나타냅니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 4:30

@@ -1,12 +1,9 @@
 package org.hibernate.examples.model;
 
-import org.hibernate.examples.PersistentObject;
-
-import javax.persistence.PostLoad;
-import javax.persistence.PostPersist;
+import org.hibernate.examples.utils.ToStringHelper;
 
 /**
- * org.hibernate.examples.model.AbstractPersistentObject
+ * 영구 저장소에 저장 여부를 나타내는 클래스입니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 2:37
@@ -18,20 +15,17 @@ public abstract class AbstractPersistentObject extends AbstractValueObject imple
     @Override
     public boolean isPersisted() {
 
+
         return persisted;
     }
 
-    @Override
-    @PostPersist
-    public void onSave() {
-        persisted = true;
+    protected void setPersisted(Boolean v) {
+        persisted = v;
     }
 
-
     @Override
-    @PostLoad
-    public void onLoad() {
-        persisted = true;
+    protected ToStringHelper buildStringHelper() {
+        return super.buildStringHelper().add("persisted", persisted);
     }
 
     private static final long serialVersionUID = -1668910261730798160L;

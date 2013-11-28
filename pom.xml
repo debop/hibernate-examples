@@ -52,7 +52,26 @@
             <version>1.12.2</version>
         </dependency>
 
-        <!-- Spring Framework -->
+	    <!-- Guava -->
+	    <dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>15.0</version>
+	    </dependency>
+
+	    <!-- joda-time -->
+	    <dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.3</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.joda</groupId>
+		    <artifactId>joda-convert</artifactId>
+		    <version>1.5</version>
+	    </dependency>
+
+	    <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>

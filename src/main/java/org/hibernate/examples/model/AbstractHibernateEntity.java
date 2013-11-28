@@ -1,8 +1,11 @@
 package org.hibernate.examples.model;
 
-import org.hibernate.examples.HibernateEntity;
 import org.hibernate.examples.utils.Hashs;
 import org.hibernate.examples.utils.ToStringHelper;
+
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
 
 /**
  * org.hibernate.examples.model.AbstractHibernateEntity
@@ -10,9 +13,24 @@ import org.hibernate.examples.utils.ToStringHelper;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 2:36
  */
+@MappedSuperclass
 public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObject implements HibernateEntity<TId> {
 
     abstract public TId getId();
+
+    @Override
+    @PostPersist
+    public void onSave() {
+        setPersisted(true);
+    }
+
+
+    @Override
+    @PostLoad
+    public void onLoad() {
+        setPersisted(true);
+    }
+
 
     @Override
     @SuppressWarnings("unchecked")
@@ -30,7 +48,7 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     @Override
     public int hashCode() {
         return (getId() == null) ? System.identityHashCode(this)
-                : Hashs.hash(getId());
+                                 : Hashs.hash(getId());
     }
 
     private boolean hasSameNonDefaultIdAs(HibernateEntity<TId> entity) {
@@ -54,7 +72,7 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     @Override
     public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .add("id", getId());
+                    .add("id", getId());
     }
 
     private static final long serialVersionUID = 6661386933952675946L;

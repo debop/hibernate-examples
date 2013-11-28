@@ -2,7 +2,7 @@ package org.hibernate.examples.hibernate.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.EmptyInterceptor;
-import org.hibernate.examples.PersistentObject;
+import org.hibernate.examples.model.PersistentObject;
 
 import java.io.Serializable;
 
