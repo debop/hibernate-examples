@@ -31,10 +31,9 @@ import java.util.Properties;
 @Slf4j
 public abstract class AbstractHibernateConfiguration {
 
-    public String getJdbcUrl() {
-        return "jdbc:hsqldb:mem:hibernate_test;MVCC=TRUE;";
+    public String getDatabaseName() {
+        return "hibernate";
     }
-
 
     /**
      * Mapping Enitty 들이 정의된 Package 명의 배열을 반환합니다.
@@ -103,7 +102,7 @@ public abstract class AbstractHibernateConfiguration {
     @Bean
     public DataSource dataSource() {
         return buildDataSource("org.hsqldb.jdbcDriver",
-                               getJdbcUrl(),
+                               "jdbc:hsqldb:mem:" + getDatabaseName() + ";MVCC=TRUE;",
                                "sa",
                                "");
     }
