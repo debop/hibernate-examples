@@ -31,16 +31,16 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_seq")
-    @Column(name = "EmployeeId")
+    @Column(name = "employeeId")
     private Long id;
 
-    @Column(name = "EmpNo", nullable = false, length = 32)
+    @Column(name = "empNo", nullable = false, length = 32)
     private String empNo;
 
-    @Column(name = "EmployeeName", nullable = false, length = 32)
+    @Column(name = "employeeName", nullable = false, length = 32)
     private String name;
 
-    @Column(name = "Email", length = 32)
+    @Column(name = "email", length = 32)
     private String email;
 
     @Type(type = "org.hibernate.examples.usertype.JodaDateTimeUserType")
@@ -64,10 +64,10 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
     @Override
     public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                    .add("id", id)
-                    .add("empNo", empNo)
-                    .add("name", name)
-                    .add("email", email);
+                .add("id", id)
+                .add("empNo", empNo)
+                .add("name", name)
+                .add("email", email);
     }
 
 

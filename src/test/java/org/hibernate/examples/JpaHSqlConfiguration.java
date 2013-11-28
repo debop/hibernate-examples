@@ -3,6 +3,7 @@ package org.hibernate.examples;
 import org.hibernate.cfg.Environment;
 import org.hibernate.examples.jpa.config.AbstractHSqlJpaConfiguration;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
@@ -14,13 +15,14 @@ import java.util.Properties;
  * @since 2013. 11. 28. 오후 3:36
  */
 @Configuration
+@EnableJpaRepositories
 @EnableTransactionManagement
 public class JpaHSqlConfiguration extends AbstractHSqlJpaConfiguration {
 
 
     @Override
     public String[] getMappedPackageNames() {
-        return new String[]{
+        return new String[] {
                 "org.hibernate.examples.mapping"
         };
     }
