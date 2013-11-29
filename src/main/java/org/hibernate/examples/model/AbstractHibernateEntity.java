@@ -20,14 +20,14 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
 
     @Override
     @PostPersist
-    public void onSave() {
+    public final void onSave() {
         setPersisted(true);
     }
 
 
     @Override
     @PostLoad
-    public void onLoad() {
+    public final void onLoad() {
         setPersisted(true);
     }
 
