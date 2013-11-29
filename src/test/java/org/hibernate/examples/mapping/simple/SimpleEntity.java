@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.examples.model.AbstractHibernateEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.Entity;
@@ -35,7 +35,7 @@ public class SimpleEntity extends AbstractHibernateEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(name);
+        return HashTool.compute(name);
     }
 
     @Override

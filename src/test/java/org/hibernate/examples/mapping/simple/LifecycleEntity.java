@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.examples.model.AbstractHibernateEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -39,7 +39,7 @@ public class LifecycleEntity extends AbstractHibernateEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(name);
+        return HashTool.compute(name);
     }
 
     private static final long serialVersionUID = 9019361741633267121L;

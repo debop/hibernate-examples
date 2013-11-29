@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.examples.model.AbstractHibernateEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
+import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.*;
 import java.util.HashMap;
@@ -45,7 +46,13 @@ public class JoinUser extends AbstractHibernateEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(name);
+        return HashTool.compute(name);
+    }
+
+    @Override
+    public ToStringHelper buildStringHelper() {
+        return super.buildStringHelper()
+                    .add("name", name);
     }
 
     private static final long serialVersionUID = -1086694041889310074L;

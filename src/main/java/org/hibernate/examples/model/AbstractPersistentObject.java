@@ -24,7 +24,7 @@ public abstract class AbstractPersistentObject extends AbstractValueObject imple
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper().add("persisted", persisted);
     }
 

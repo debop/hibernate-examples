@@ -1,6 +1,6 @@
 package org.hibernate.examples.model;
 
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.MappedSuperclass;
@@ -48,7 +48,7 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
     @Override
     public int hashCode() {
         return (getId() == null) ? System.identityHashCode(this)
-                : Hashs.hash(getId());
+                                 : HashTool.compute(getId());
     }
 
     private boolean hasSameNonDefaultIdAs(HibernateEntity<TId> entity) {
@@ -61,18 +61,18 @@ public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObj
 
     private boolean hasSameBusinessSignature(HibernateEntity<TId> other) {
         boolean notNull = (other != null);
-        int hash = (getId() != null) ? Hashs.hash(getId()) : hashCode();
+        int hash = (getId() != null) ? HashTool.compute(getId()) : hashCode();
         if (notNull) {
-            int otherHash = (other.getId() != null) ? Hashs.hash(other.getId()) : other.hashCode();
+            int otherHash = (other.getId() != null) ? HashTool.compute(other.getId()) : other.hashCode();
             return hash == otherHash;
         }
         return false;
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .add("id", getId());
+                    .add("id", getId());
     }
 
     private static final long serialVersionUID = 6661386933952675946L;

@@ -1,0 +1,50 @@
+package org.hibernate.examples.mapping.associations.manytoone;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Proxy;
+import org.hibernate.examples.model.AbstractHibernateEntity;
+import org.hibernate.examples.utils.HashTool;
+import org.hibernate.examples.utils.ToStringHelper;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * org.hibernate.examples.mapping.associations.manytoone.Brewery
+ *
+ * @author 배성혁 sunghyouk.bae@gmail.com
+ * @since 2013. 11. 29. 오전 9:40
+ */
+@Entity
+@Proxy
+@Getter
+@Setter
+public class Brewery extends AbstractHibernateEntity<Long> {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(cascade = { CascadeType.ALL }, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    Set<Beer> beers = new HashSet<Beer>();
+
+    @Override
+    public int hashCode() {
+        return HashTool.compute(name);
+    }
+
+    @Override
+    public ToStringHelper buildStringHelper() {
+        return super.buildStringHelper()
+                    .add("name", name);
+    }
+
+    private static final long serialVersionUID = -7350106569344824229L;
+}

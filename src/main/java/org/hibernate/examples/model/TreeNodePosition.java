@@ -2,7 +2,7 @@ package org.hibernate.examples.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.Column;
@@ -43,11 +43,11 @@ public class TreeNodePosition extends AbstractValueObject {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(level, order);
+        return HashTool.compute(level, order);
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
                     .add("level", level)
                     .add("order", order);

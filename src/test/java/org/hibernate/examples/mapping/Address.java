@@ -3,7 +3,7 @@ package org.hibernate.examples.mapping;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractValueObject;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.Embeddable;
@@ -28,7 +28,7 @@ public class Address extends AbstractValueObject {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(zipcode, street, city, state, country);
+        return HashTool.compute(zipcode, street, city, state, country);
     }
 
     @Override

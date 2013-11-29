@@ -1,4 +1,4 @@
-package org.hibernate.examples.hibernate.config;
+package org.hibernate.examples.mapping.associations.manytoone;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,23 +12,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * org.hibernate.examples.hibernate.config.Account
+ * org.hibernate.examples.mapping.associations.manytoone.Jug
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 2013. 11. 28. 오전 9:44
+ * @since 2013. 11. 29. 오전 10:17
  */
 @Entity
 @Getter
 @Setter
-public class Account extends AbstractHibernateEntity<Long> {
+public class Jug extends AbstractHibernateEntity<Long> {
+
+    public Jug() {}
+
+    public Jug(String name) {
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private double cashBalance;
-
-    @Column(name = "AccountName", nullable = false, length = 32)
+    @Column(length = 100)
     private String name;
 
     @Override
@@ -38,10 +42,8 @@ public class Account extends AbstractHibernateEntity<Long> {
 
     @Override
     public ToStringHelper buildStringHelper() {
-        return super.buildStringHelper()
-                    .add("id", id)
-                    .add("name", name);
+        return super.buildStringHelper().add("name", name);
     }
 
-    private static final long serialVersionUID = 8633146002860863953L;
+    private static final long serialVersionUID = -2644369668002026174L;
 }

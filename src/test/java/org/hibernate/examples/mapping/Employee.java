@@ -8,7 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.model.UpdatedTimestampEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 import org.joda.time.DateTime;
 
@@ -58,16 +58,16 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
 
     @Override
     public int hashCode() {
-        return Hashs.hash(empNo, name);
+        return HashTool.compute(empNo, name);
     }
 
     @Override
     public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .add("id", id)
-                .add("empNo", empNo)
-                .add("name", name)
-                .add("email", email);
+                    .add("id", id)
+                    .add("empNo", empNo)
+                    .add("name", name)
+                    .add("email", email);
     }
 
 

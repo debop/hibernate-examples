@@ -3,7 +3,7 @@ package org.hibernate.examples.mapping.associations.join;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.Entity;
@@ -31,15 +31,15 @@ public class JoinAddressEntity extends AbstractHibernateEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(street, city, zipcode);
+        return HashTool.compute(street, city, zipcode);
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .add("street", street)
-                .add("city", city)
-                .add("zipcode", zipcode);
+                    .add("street", street)
+                    .add("city", city)
+                    .add("zipcode", zipcode);
     }
 
     private static final long serialVersionUID = 6610359502465293056L;

@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.examples.model.AbstractHibernateEntity;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
+import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -56,7 +57,16 @@ public class JoinCustomer extends AbstractHibernateEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Hashs.hash(name, email);
+        return HashTool.compute(name, email);
+    }
+
+    @Override
+    public ToStringHelper buildStringHelper() {
+        return super.buildStringHelper()
+                    .add("name", name)
+                    .add("email", email)
+                    .add("createdAt", createdAt)
+                    .add("updatedAt", updatedAt);
     }
 
     private static final long serialVersionUID = 5214616271922396271L;

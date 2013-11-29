@@ -20,7 +20,7 @@ public abstract class AbstractValueObject implements ValueObject {
         return buildStringHelper().toString();
     }
 
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return ToStringHelper.create(this);
     }
 

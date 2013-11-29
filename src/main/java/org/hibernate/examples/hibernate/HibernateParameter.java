@@ -28,7 +28,7 @@ public class HibernateParameter extends AbstractNamedParameter {
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper().add("paramType", paramType);
     }
 

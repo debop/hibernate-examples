@@ -3,7 +3,7 @@ package org.hibernate.examples;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractValueObject;
-import org.hibernate.examples.utils.Hashs;
+import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
 /**
@@ -26,11 +26,11 @@ public abstract class AbstractNamedParameter extends AbstractValueObject impleme
 
     @Override
     public int hashCode() {
-        return Hashs.hash(name);
+        return HashTool.compute(name);
     }
 
     @Override
-    protected ToStringHelper buildStringHelper() {
+    public ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
                     .add("name", name)
                     .add("value", value);
