@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.HashMap;
@@ -24,17 +23,16 @@ public class OneToManyCar extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
-    @Column(name = "carId")
     private Long id;
 
     private String name;
 
-    @CollectionTable(name = "Car_Options", joinColumns = { @JoinColumn(name = "carId") })
+    @CollectionTable(name = "OneToMany_Car_Option_Map", joinColumns = { @JoinColumn(name = "carId") })
     @MapKeyClass(String.class) // Map의 Key 에 해당하는 놈의 수형
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     private Map<String, String> options = new HashMap<String, String>();
 
-    @CollectionTable(name = "OneToManyCar_Options", joinColumns = { @JoinColumn(name = "carId") })
+    @CollectionTable(name = "OneToMany_Car_Option_Table", joinColumns = { @JoinColumn(name = "carId") })
     @MapKeyClass(String.class)
     @ElementCollection(targetClass = OneToManyCarOption.class, fetch = FetchType.EAGER)
     private Map<String, OneToManyCarOption> carOptions = new HashMap<String, OneToManyCarOption>();

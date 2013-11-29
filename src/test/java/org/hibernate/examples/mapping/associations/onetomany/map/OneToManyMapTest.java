@@ -1,13 +1,14 @@
 package org.hibernate.examples.mapping.associations.onetomany.map;
 
 import lombok.extern.slf4j.Slf4j;
-import org.fest.assertions.Assertions;
 import org.hibernate.examples.AbstractJpaTest;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * org.hibernate.examples.mapping.associations.onetomany.map.OneToManyMapTest
@@ -24,6 +25,7 @@ public class OneToManyMapTest extends AbstractJpaTest {
 
     @Test
     public void mapTest() throws Exception {
+
         OneToManyCar car = new OneToManyCar();
 
         OneToManyCarOption option1 = new OneToManyCarOption("option1", 1);
@@ -40,8 +42,9 @@ public class OneToManyMapTest extends AbstractJpaTest {
         em.clear();
 
         OneToManyCar loaded = em.find(OneToManyCar.class, car.getId());
-        Assertions.assertThat(loaded).isNotNull();
-        Assertions.assertThat(loaded.getCarOptions()).hasSize(2);
+        assertThat(loaded).isNotNull();
+        assertThat(loaded.getCarOptions()).hasSize(2);
+        assertThat(loaded.getOptions()).hasSize(2);
 
     }
 }
