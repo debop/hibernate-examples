@@ -21,6 +21,7 @@ import static org.fest.assertions.Assertions.assertThat;
  * @since 2013. 11. 28. 오후 11:03
  */
 @Slf4j
+@Transactional
 public class QueryDslRepositoryTest extends AbstractJpaTest {
 
     @Autowired
@@ -30,7 +31,6 @@ public class QueryDslRepositoryTest extends AbstractJpaTest {
     EntityManager em;
 
     @Test
-    @Transactional
     public void findAllTest() {
         Employee emp = new Employee();
         emp.setName("Sunghyouk Bae");
