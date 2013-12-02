@@ -6,6 +6,7 @@ import org.hibernate.examples.utils.ToStringHelper;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;
+import java.io.Serializable;
 
 /**
  * org.hibernate.examples.model.AbstractHibernateEntity
@@ -14,7 +15,7 @@ import javax.persistence.PostPersist;
  * @since 2013. 11. 27. 오후 2:36
  */
 @MappedSuperclass
-public abstract class AbstractHibernateEntity<TId> extends AbstractPersistentObject implements HibernateEntity<TId> {
+public abstract class AbstractHibernateEntity<TId extends Serializable> extends AbstractPersistentObject implements HibernateEntity<TId> {
 
     abstract public TId getId();
 
