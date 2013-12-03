@@ -10,7 +10,8 @@ import org.hibernate.examples.utils.HashTool;
 import javax.persistence.*;
 
 /**
- * org.hibernate.examples.mapping.property.enumerated.EnumeratedEntity
+ * Enum 값 하나만을 표현하는 예제.
+ * 복수의 Enum 값을 가지는 경우 C#에서는 @flags 를 쓰지만, java에서는 EnumSet을 사용해야 합니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 12. 3. 오후 1:56
