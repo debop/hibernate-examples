@@ -13,6 +13,7 @@ import org.hibernate.examples.utils.ToStringHelper;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * org.hibernate.examples.mapping.Employee
@@ -43,6 +44,12 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
     @Column(name = "email", length = 32)
     private String email;
 
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
+
+    /**
+     * UserType 예
+     */
     @Type(type = "org.hibernate.examples.usertype.JodaDateTimeUserType")
     private DateTime updatedTimestamp;
 
@@ -70,8 +77,5 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
                     .add("email", email);
     }
 
-
     private static final long serialVersionUID = 6878934074258579705L;
-
-
 }
