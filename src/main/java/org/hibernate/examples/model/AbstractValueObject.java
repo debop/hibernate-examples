@@ -3,7 +3,7 @@ package org.hibernate.examples.model;
 import org.hibernate.examples.utils.ToStringHelper;
 
 /**
- * org.hibernate.examples.model.AbstractValueObject
+ * Value Object 의 기본 클래스입니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 2:39

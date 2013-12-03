@@ -24,8 +24,19 @@ public abstract class AbstractPersistentObject extends AbstractValueObject imple
     }
 
     @Override
+    public void onSave() {
+        setPersisted(true);
+    }
+
+    @Override
+    public void onLoad() {
+        setPersisted(true);
+    }
+
+    @Override
     public ToStringHelper buildStringHelper() {
-        return super.buildStringHelper().add("persisted", persisted);
+        return super.buildStringHelper()
+                    .add("persisted", persisted);
     }
 
     private static final long serialVersionUID = -1668910261730798160L;

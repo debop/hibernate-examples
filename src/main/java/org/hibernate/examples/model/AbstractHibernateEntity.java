@@ -9,7 +9,7 @@ import javax.persistence.PostPersist;
 import java.io.Serializable;
 
 /**
- * org.hibernate.examples.model.AbstractHibernateEntity
+ * Hibernate Entity의 최상위 추상화 클래스입니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 27. 오후 2:36
@@ -19,12 +19,14 @@ public abstract class AbstractHibernateEntity<TId extends Serializable> extends 
 
     abstract public TId getId();
 
+    // NOTE: JPA 에서는 #onSave(), #onLoad() 를 @MappedSuperclass 나 @Entity 에 재정의해야한다.
+    // NOTE: Hibernate 에서는 Interceptor에서 관리하므로, {@link AbstractPersistentObject}에만 정의해도 된다.
+
     @Override
     @PostPersist
     public final void onSave() {
         setPersisted(true);
     }
-
 
     @Override
     @PostLoad
@@ -41,7 +43,7 @@ public abstract class AbstractHibernateEntity<TId extends Serializable> extends 
         if (isSampeType) {
             HibernateEntity<TId> entity = (HibernateEntity<TId>) obj;
             return hasSameNonDefaultIdAs(entity) ||
-                    ((!isPersisted() || !entity.isPersisted()) && hasSameBusinessSignature(entity));
+                   ((!isPersisted() || !entity.isPersisted()) && hasSameBusinessSignature(entity));
         }
         return false;
     }
