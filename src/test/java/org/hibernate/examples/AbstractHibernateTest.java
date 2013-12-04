@@ -2,6 +2,7 @@ package org.hibernate.examples;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
+import org.hibernate.examples.hibernate.repository.HibernateDao;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,4 +21,7 @@ public abstract class AbstractHibernateTest {
 
     @Autowired
     protected SessionFactory sessionFactory;
+
+    @Autowired
+    protected HibernateDao dao;
 }

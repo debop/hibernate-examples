@@ -7,6 +7,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.examples.hibernate.HibernateParameter;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -341,39 +342,33 @@ public interface HibernateDao {
      *
      * @param clazz    entity type
      * @param criteria criteria
-     * @param pageNo   page number ( start from 1 )
-     * @param pageSize page size
-     * @param orders   ordering
+     * @param pageable Pageable 정보
      * @param <T>      entity type
      * @return Paging list
      */
-    <T> Page<T> getPage(Class<T> clazz, Criteria criteria, int pageNo, int pageSize, Order... orders);
+    <T> Page<T> getPage(Class<T> clazz, Criteria criteria, Pageable pageable);
 
     /**
      * 해당 엔티티 수형의 정보 중 해당 페이지 범위만 조회를 수행합니다.
      *
      * @param clazz    entity type
      * @param dc       DetachedCriteria instance
-     * @param pageNo   page number ( start from 1 )
-     * @param pageSize page size
-     * @param orders   ordering
+     * @param pageable Pageable 정보
      * @param <T>      entity type
      * @return Paging list
      */
-    <T> Page<T> getPage(Class<T> clazz, DetachedCriteria dc, int pageNo, int pageSize, Order... orders);
+    <T> Page<T> getPage(Class<T> clazz, DetachedCriteria dc, Pageable pageable);
 
     /**
      * 해당 엔티티 수형의 정보 중 해당 페이지 범위만 조회를 수행합니다.
      *
-     * @param clazz      entity type
-     * @param query      Query instance
-     * @param pageNo     page number ( start from 1 )
-     * @param pageSize   page size
-     * @param parameters parameters for Query
-     * @param <T>        entity type
+     * @param clazz    entity type
+     * @param query    Query instance
+     * @param pageable Pageable 정보
+     * @param <T>      entity type
      * @return Paging list
      */
-    <T> Page<T> getPage(Class<T> clazz, Query query, int pageNo, int pageSize, HibernateParameter... parameters);
+    <T> Page<T> getPage(Class<T> clazz, Query query, Pageable pageable, HibernateParameter... parameters);
 
 
     /**
@@ -381,39 +376,36 @@ public interface HibernateDao {
      *
      * @param clazz      entity type
      * @param hql        query string by Hibernate Query Language
-     * @param pageNo     page number ( start from 1 )
-     * @param pageSize   page size
+     * @param pageable   Pagable 정보
      * @param parameters parameters for Query
      * @param <T>        entity type
      * @return Paging list
      */
-    <T> Page<T> getPageByHql(Class<T> clazz, String hql, int pageNo, int pageSize, HibernateParameter... parameters);
+    <T> Page<T> getPageByHql(Class<T> clazz, String hql, Pageable pageable, HibernateParameter... parameters);
 
     /**
      * 해당 엔티티 수형의 정보 중 해당 페이지 범위만 조회를 수행합니다.
      *
      * @param clazz      entity type
      * @param queryName  name of NamedQuery
-     * @param pageNo     page number ( start from 1 )
-     * @param pageSize   page size
+     * @param pageable   Pageable 정보
      * @param parameters parameters for Query
      * @param <T>        entity type
      * @return Paging list
      */
-    <T> Page<T> getPageByNamedQuery(Class<T> clazz, final String queryName, int pageNo, int pageSize, HibernateParameter... parameters);
+    <T> Page<T> getPageByNamedQuery(Class<T> clazz, final String queryName, Pageable pageable, HibernateParameter... parameters);
 
     /**
      * 해당 엔티티 수형의 정보 중 해당 페이지 범위만 조회를 수행합니다.
      *
      * @param clazz      entity type
      * @param sqlString  native query string
-     * @param pageNo     page number ( start from 1 )
-     * @param pageSize   page size
+     * @param pageable   Pageable 정보
      * @param parameters parameters for Query
      * @param <T>        entity type
      * @return Paging list
      */
-    <T> Page<T> getPageBySQLString(Class<T> clazz, final String sqlString, int pageNo, int pageSize, HibernateParameter... parameters);
+    <T> Page<T> getPageBySQLString(Class<T> clazz, final String sqlString, Pageable pageable, HibernateParameter... parameters);
 
     /**
      * 지정한 엔티티에 대한 유일한 결과를 조회합니다. (결과가 없거나, 복수이면 예외가 발생합니다.
@@ -762,12 +754,11 @@ public interface HibernateDao {
      * @param projectClass   최종 변환된 수형
      * @param projectionList projection 작업 목록
      * @param criteria       질의
-     * @param pageNo         페이징된 레코드들의 페이지 번호  (1 부터 시작)
-     * @param pageSize       페이징된 레코드들의 페이지 크기
+     * @param pageable       Pageable 정보
      * @param <P>            대상 수형
      * @return Projection된 수형
      */
-    <P> Page<P> reportPage(Class<P> projectClass, ProjectionList projectionList, Criteria criteria, int pageNo, int pageSize);
+    <P> Page<P> reportPage(Class<P> projectClass, ProjectionList projectionList, Criteria criteria, Pageable pageable);
 
     /**
      * 질의어에 해당하는 엔티티를 로드한 후 Projection을 거쳐 원하는 수형의 객체로 변환합니다.
@@ -776,11 +767,10 @@ public interface HibernateDao {
      * @param projectClass   최종 변환된 수형
      * @param projectionList projection 작업 목록
      * @param dc             질의
-     * @param pageNo         페이징된 레코드들의 페이지 번호  (1 부터 시작)
-     * @param pageSize       페이징된 레코드들의 페이지 크기
+     * @param pageable       Pageable 정보
      * @param <P>            대상 수형
      * @return Projection된 수형
      */
-    <P> Page<P> reportPage(Class<P> projectClass, ProjectionList projectionList, DetachedCriteria dc, int pageNo, int pageSize);
+    <P> Page<P> reportPage(Class<P> projectClass, ProjectionList projectionList, DetachedCriteria dc, Pageable pageable);
 
 }

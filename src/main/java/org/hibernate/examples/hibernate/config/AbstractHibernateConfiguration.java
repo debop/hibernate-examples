@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 import org.hibernate.cfg.NamingStrategy;
 import org.hibernate.examples.hibernate.interceptor.PersistentObjectInterceptor;
+import org.hibernate.examples.hibernate.repository.HibernateDao;
+import org.hibernate.examples.hibernate.repository.HibernateDaoImpl;
 import org.hibernate.examples.utils.DataSources;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -174,6 +176,10 @@ public abstract class AbstractHibernateConfiguration {
         return new PersistentObjectInterceptor();
     }
 
+    @Bean
+    public HibernateDao hibernateDao() {
+        return new HibernateDaoImpl();
+    }
 
     /**
      * Hibernate 에외를 변환하는 {@link HibernateExceptionTranslator} 를 Spring 의 ApplicationContext에 등록합니다.

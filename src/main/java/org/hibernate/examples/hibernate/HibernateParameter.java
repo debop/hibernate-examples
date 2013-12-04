@@ -7,7 +7,7 @@ import org.hibernate.examples.utils.ToStringHelper;
 import org.hibernate.type.StandardBasicTypes;
 
 /**
- * org.hibernate.examples.hibernate.HibernateParameter
+ * Hibernate Query 에 사용할 인자 정보를 표현합니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 28. 오후 1:59
