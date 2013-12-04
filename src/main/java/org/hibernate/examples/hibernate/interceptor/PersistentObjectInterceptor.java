@@ -7,7 +7,7 @@ import org.hibernate.examples.model.PersistentObject;
 import java.io.Serializable;
 
 /**
- * org.hibernate.examples.hibernate.interceptor.PersistentObjectInterceptor
+ * Hibernate PersistentObject의 영구저장 여부를 관리할 수 있도록 해주는 Interceptor입니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 28. 오전 11:06
@@ -19,6 +19,9 @@ public class PersistentObjectInterceptor extends EmptyInterceptor {
         return entity instanceof PersistentObject && ((PersistentObject) entity).isPersisted();
     }
 
+    /**
+     * 엔티티 로드 후 {@link org.hibernate.examples.model.PersistentObject#onLoad()} 를 호출합니다.
+     */
     @Override
     public boolean onLoad(Object entity,
                           Serializable id,
@@ -31,6 +34,9 @@ public class PersistentObjectInterceptor extends EmptyInterceptor {
         return false;
     }
 
+    /**
+     * 엔티티 저장 후 {@link org.hibernate.examples.model.PersistentObject#onSave()}를 호출합니다.
+     */
     @Override
     public boolean onSave(Object entity,
                           Serializable id,

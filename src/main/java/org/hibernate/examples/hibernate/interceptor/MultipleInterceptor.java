@@ -1,19 +1,16 @@
 package org.hibernate.examples.hibernate.interceptor;
 
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.Interceptor;
 import org.hibernate.type.Type;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
- * org.hibernate.examples.hibernate.interceptor.MultipleInterceptor
+ * Hibernate에 등록할 수 있는 Interceptor는 하나입니다.
+ * MultipleInterceptor는 복수의 Interceptor이 작업할 수 있도록 해줍니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 28. 오후 1:51
@@ -21,11 +18,13 @@ import java.util.List;
 @Slf4j
 public class MultipleInterceptor extends EmptyInterceptor {
 
-    @Setter
-    private List<Interceptor> interceptors = new ArrayList<Interceptor>();
+    private final List<Interceptor> interceptors = new ArrayList<Interceptor>();
 
-    public MultipleInterceptor(Interceptor... interceptors) {
-        Collections.addAll(this.interceptors, interceptors);
+    public MultipleInterceptor(Collection<? extends Interceptor> c) {
+        this.interceptors.addAll(c);
+    }
+    public MultipleInterceptor(Interceptor... array) {
+        Collections.addAll(this.interceptors, array);
     }
 
     public void addInterceptor(Interceptor interceptor) {
