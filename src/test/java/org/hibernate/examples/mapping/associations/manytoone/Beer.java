@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -18,7 +17,6 @@ import javax.persistence.*;
  * @since 2013. 11. 29. 오전 9:37
  */
 @Entity
-@Proxy
 @Getter
 @Setter
 public class Beer extends AbstractHibernateEntity<Long> {

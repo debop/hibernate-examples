@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.Proxy;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -20,7 +21,6 @@ import java.util.Set;
  * @since 2013. 11. 29. 오전 9:40
  */
 @Entity
-@Proxy
 @Getter
 @Setter
 public class Brewery extends AbstractHibernateEntity<Long> {
@@ -34,6 +34,11 @@ public class Brewery extends AbstractHibernateEntity<Long> {
     @OneToMany(cascade = { CascadeType.ALL }, orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.EXTRA)
     Set<Beer> beers = new HashSet<Beer>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @LazyToOne(LazyToOneOption.PROXY)
+    @JoinColumn(name = "vendorId")
+    private BeerVendor vendor;
 
     @Override
     public int hashCode() {

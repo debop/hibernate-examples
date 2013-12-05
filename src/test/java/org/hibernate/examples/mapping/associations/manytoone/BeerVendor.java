@@ -1,0 +1,33 @@
+package org.hibernate.examples.mapping.associations.manytoone;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.examples.model.AbstractHibernateEntity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+/**
+ * org.hibernate.examples.mapping.associations.manytoone.BeerVendor
+ *
+ * @author 배성혁 sunghyouk.bae@gmail.com
+ * @since 2013. 12. 5. 오전 10:20
+ */
+@Entity(name = "BeerVendor")
+@DynamicInsert
+@DynamicUpdate
+@Getter
+@Setter
+public class BeerVendor extends AbstractHibernateEntity<Long> {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    private static final long serialVersionUID = -6166454923892484549L;
+}
