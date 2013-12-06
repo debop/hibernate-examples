@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.examples.model.AbstractHibernateEntity;
+import org.hibernate.examples.utils.HashTool;
+import org.hibernate.examples.utils.ToStringHelper;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +30,17 @@ public class BeerVendor extends AbstractHibernateEntity<Long> {
     private Long id;
 
     private String name;
+
+    @Override
+    public int hashCode() {
+        return HashTool.compute(name);
+    }
+
+    @Override
+    public ToStringHelper buildStringHelper() {
+        return super.buildStringHelper()
+                    .add("name", name);
+    }
 
     private static final long serialVersionUID = -6166454923892484549L;
 }
