@@ -26,10 +26,16 @@ public class ManyToOneTest extends AbstractJpaTest {
     @Transactional
     public void bidirectionalManyToOneInsertUpdateFalse() throws Exception {
 
+        BeerVendor vendor = new BeerVendor();
+        vendor.setName("Heineken");
+        em.persist(vendor);
+
         Brewery hoeBrewery = new Brewery();
         Beer hoegaarden = new Beer();
         hoeBrewery.getBeers().add(hoegaarden);
         hoegaarden.setBrewery(hoeBrewery);
+        hoeBrewery.setVendor(vendor);
+
         em.persist(hoeBrewery);
         em.flush();
         em.clear();
@@ -40,6 +46,8 @@ public class ManyToOneTest extends AbstractJpaTest {
         assertThat(hoegaarden.getBrewery()).isNotNull();
         assertThat(hoegaarden.getBrewery().getId()).isNotNull();
         assertThat(hoegaarden.getBrewery().getBeers()).hasSize(1).containsOnly(hoegaarden);
+        assertThat(hoegaarden.getBrewery().getVendor()).isNotNull();
+        assertThat(hoegaarden.getBrewery().getVendor().getId()).isNotNull();
 
         // citron을 명시적으로 저장하지 않은 것은, Brewery#beers @OneToMany에 mappedBy 를 지정하지 않았기 때문에 전체를 한번에 추가 삭제합니다.
         // 만약 Brewery#beers에 mappedBy="brewery" 를 추가한다면, Beer 엔티티 개별로 조작해야 하므로, citron은 미리 저장해야 합니다.
