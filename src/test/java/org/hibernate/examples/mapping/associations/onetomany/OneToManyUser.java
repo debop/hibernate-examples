@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.onetomany;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.*;
@@ -29,6 +30,7 @@ public class OneToManyUser extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "userId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String city;

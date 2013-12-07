@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.property;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -28,6 +29,7 @@ public class PropertyEntity extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

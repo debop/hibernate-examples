@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.inheritance.joinedsubclass;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -28,6 +29,7 @@ public abstract class Person extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "personId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     @Column(name = "personName", nullable = false, length = 128)

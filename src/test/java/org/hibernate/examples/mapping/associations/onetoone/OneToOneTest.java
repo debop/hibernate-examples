@@ -30,6 +30,11 @@ public class OneToOneTest extends AbstractJpaTest {
 
     @PersistenceContext EntityManager em;
 
+    /**
+     * one-to-one 매핑 중 가장 보편적인 방식입니다.
+     *
+     * @throws Exception
+     */
     @Test
     public void authorBiography() throws Exception {
         OneToOneAuthor author = new OneToOneAuthor();

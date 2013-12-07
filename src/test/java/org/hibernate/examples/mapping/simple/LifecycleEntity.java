@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.simple;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenerationTime;
@@ -22,6 +23,7 @@ public class LifecycleEntity extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

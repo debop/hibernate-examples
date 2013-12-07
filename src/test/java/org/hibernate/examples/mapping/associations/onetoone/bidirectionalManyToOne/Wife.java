@@ -1,10 +1,10 @@
 package org.hibernate.examples.mapping.associations.onetoone.bidirectionalManyToOne;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -18,7 +18,6 @@ import javax.persistence.*;
  * @since 2013. 11. 29. 오후 3:11
  */
 @Entity
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -28,6 +27,7 @@ public class Wife extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "wifeId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

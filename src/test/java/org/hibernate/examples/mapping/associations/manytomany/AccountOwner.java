@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.manytomany;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
@@ -24,6 +25,7 @@ public class AccountOwner extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "ownerId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     /**

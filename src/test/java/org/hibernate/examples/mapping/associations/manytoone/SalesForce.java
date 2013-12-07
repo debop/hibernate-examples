@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.manytoone;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollection;
@@ -31,6 +32,7 @@ public class SalesForce extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String corporation;

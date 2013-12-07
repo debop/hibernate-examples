@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.queries;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -27,6 +28,7 @@ public class Helicopter extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

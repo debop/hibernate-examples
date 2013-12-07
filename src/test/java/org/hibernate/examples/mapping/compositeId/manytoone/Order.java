@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.compositeId.manytoone;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -32,6 +33,7 @@ public class Order extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "orderId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String number;

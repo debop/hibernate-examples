@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
@@ -18,7 +17,6 @@ import javax.persistence.Entity;
  * @since 2013. 12. 3. 오전 1:33
  */
 @Entity(name = "UnionSubsclass_CreditCard")
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter

@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.join;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Generated;
@@ -27,6 +28,7 @@ public class JoinCustomer extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "CustomerId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

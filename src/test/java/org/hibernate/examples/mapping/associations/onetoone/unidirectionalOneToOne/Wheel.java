@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.onetoone.unidirectionalOneToOne;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -24,6 +25,8 @@ import javax.persistence.*;
 public class Wheel extends AbstractHibernateEntity<Long> {
 
     @Id
+    @Column(name = "vehicleId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;
@@ -31,9 +34,8 @@ public class Wheel extends AbstractHibernateEntity<Long> {
     private double diameter;
 
     @MapsId
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @PrimaryKeyJoinColumn
-    @org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    // @PrimaryKeyJoinColumn
     @JoinColumn(name = "vehicleId")
     private Vehicle vehicle;
 
