@@ -1,10 +1,10 @@
 package org.hibernate.examples.mapping.inheritance.joinedsubclass;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -20,7 +20,6 @@ import javax.persistence.Id;
  * @since 2013. 11. 30. 오후 12:58
  */
 @Entity(name = "JoinedSubclass_Company")
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -29,6 +28,7 @@ public class Company extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     public String name;

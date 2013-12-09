@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.compositeId.manytoone;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -38,6 +39,7 @@ public class OrderDetail extends AbstractHibernateEntity<OrderDetailIdentifier> 
     }
 
     @EmbeddedId
+    @Setter(AccessLevel.PROTECTED)
     private OrderDetailIdentifier id;
 
     private BigDecimal unitPrice;

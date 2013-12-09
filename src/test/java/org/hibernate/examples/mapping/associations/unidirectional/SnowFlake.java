@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -20,7 +19,6 @@ import javax.persistence.Id;
  * @since 2013. 11. 29. 오후 4:01
  */
 @Entity
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter

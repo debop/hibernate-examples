@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.manytoone;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyToOne;
@@ -23,6 +24,7 @@ public class Beer extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

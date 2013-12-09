@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.embeddable;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -41,6 +42,7 @@ public class User extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "userId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String firstname;

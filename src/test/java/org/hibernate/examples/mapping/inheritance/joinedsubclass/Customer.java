@@ -2,7 +2,10 @@ package org.hibernate.examples.mapping.inheritance.joinedsubclass;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
@@ -18,7 +21,6 @@ import javax.persistence.ManyToOne;
  * @since 2013. 11. 30. 오후 12:54
  */
 @Entity(name = "JoinedSubclass_Customer")
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter

@@ -1,10 +1,10 @@
 package org.hibernate.examples.mapping.associations.onetoone.unidirectionalOneToOne;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -21,7 +21,6 @@ import javax.persistence.Id;
  * @since 2013. 11. 29. 오후 3:36
  */
 @Entity
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -31,6 +30,7 @@ public class Vehicle extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "vehicleId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String brand;

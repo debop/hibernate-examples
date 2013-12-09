@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.compositeId.embeddable;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
@@ -29,6 +30,7 @@ public class EmbeddableIdCar extends AbstractHibernateEntity<EmbeddableCarIdenti
 
     @EmbeddedId
     @Column(name = "carId")
+    @Setter(AccessLevel.PROTECTED)
     private EmbeddableCarIdentifier id;
 
     private String serialNo;

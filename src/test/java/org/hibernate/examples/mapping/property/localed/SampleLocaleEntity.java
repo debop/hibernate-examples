@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.property.localed;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.*;
@@ -27,6 +28,7 @@ public class SampleLocaleEntity extends AbstractLocaleHibernateEntity<Long, Samp
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String title;

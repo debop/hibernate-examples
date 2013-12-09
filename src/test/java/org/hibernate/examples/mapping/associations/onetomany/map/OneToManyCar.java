@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.onetomany.map;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
@@ -23,6 +24,7 @@ public class OneToManyCar extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

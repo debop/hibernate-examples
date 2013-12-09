@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class Employee extends AbstractHibernateEntity<Long> implements UpdatedTi
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_seq")
     @Column(name = "employeeId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     @Column(name = "empNo", nullable = false, length = 32)

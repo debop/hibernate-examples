@@ -70,6 +70,41 @@ public class TreeNodeTest extends AbstractJpaTest {
         roots = repository.findByParentIsNull();
         assertThat(roots).hasSize(1);
         assertThat(roots.get(0)).isEqualTo(root);
+    }
 
+    @Test
+    public void buildTreeAndDelete() throws Exception {
+        TreeNode root = new TreeNode();
+        root.setTitle("root");
+
+        TreeNode child1 = new TreeNode();
+        child1.setTitle("child1");
+
+        TreeNode child2 = new TreeNode();
+        child1.setTitle("child2");
+
+        root.addChild(child1);
+        root.addChild(child2);
+
+        TreeNode child11 = new TreeNode();
+        child11.setTitle("child11");
+
+        TreeNode child12 = new TreeNode();
+        child12.setTitle("child12");
+
+        child1.addChild(child11);
+        child1.addChild(child12);
+
+        repository.saveAndFlush(root);
+        em.clear();
+
+        TreeNode node = repository.findOne(child1.getId());
+        repository.delete(node);
+        em.flush();
+        em.clear();
+
+        List<TreeNode> roots = repository.findRoots();
+        assertThat(roots).hasSize(1);
+        assertThat(roots.get(0).getChildren()).hasSize(1);
     }
 }

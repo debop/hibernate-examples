@@ -1,10 +1,12 @@
 package org.hibernate.examples.mapping.associations.onetomany.set;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -20,7 +22,8 @@ import java.sql.Timestamp;
  * @since 2013. 11. 29. 오후 2:04
  */
 @Entity
-@Proxy
+@DynamicInsert
+@DynamicUpdate
 @Getter
 @Setter
 public class OneToManyBid extends AbstractHibernateEntity<Long> {
@@ -35,6 +38,7 @@ public class OneToManyBid extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     @ManyToOne

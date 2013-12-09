@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
@@ -17,7 +16,6 @@ import javax.persistence.*;
  * @since 2013. 11. 30. 오후 12:54
  */
 @Entity(name = "JoinedSubclass_Employee")
-@Proxy
 @Getter
 @Setter
 public class Employee extends Person {

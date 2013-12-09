@@ -3,6 +3,7 @@ package org.hibernate.examples.mapping.associations.join.repository;
 import org.hibernate.examples.mapping.associations.join.JoinCustomer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 28. 오후 11:18
  */
+@Repository
 public interface JoinCustomerRepository extends JpaRepository<JoinCustomer, Long>, QueryDslPredicateExecutor<JoinCustomer> {
 
     JoinCustomer findByName(String name);

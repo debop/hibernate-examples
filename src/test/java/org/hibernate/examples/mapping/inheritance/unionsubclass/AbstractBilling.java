@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.inheritance.unionsubclass;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -31,6 +32,7 @@ public abstract class AbstractBilling extends AbstractHibernateEntity<String> {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Setter(AccessLevel.PROTECTED)
     private String id;
 
     @Column(name = "owner", nullable = false)

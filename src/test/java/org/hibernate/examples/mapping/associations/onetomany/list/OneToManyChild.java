@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.associations.onetomany.list;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.examples.model.AbstractHibernateEntity;
@@ -30,6 +31,7 @@ public class OneToManyChild extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;

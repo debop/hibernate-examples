@@ -1,6 +1,7 @@
 package org.hibernate.examples;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.examples.config.JpaHSqlConfiguration;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

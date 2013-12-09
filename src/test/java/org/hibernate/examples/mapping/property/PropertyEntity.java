@@ -1,4 +1,4 @@
-package org.hibernate.examples.mapping.queries;
+package org.hibernate.examples.mapping.property;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,19 +12,20 @@ import org.hibernate.examples.utils.ToStringHelper;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 /**
- * org.hibernate.examples.mapping.queries.Helicopter
+ * org.hibernate.examples.mapping.property.PropertyEntity
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 2013. 12. 3. 오후 8:06
+ * @since 2013. 12. 7. 오전 11:05
  */
 @Entity
 @DynamicInsert
 @DynamicUpdate
 @Getter
 @Setter
-public class Helicopter extends AbstractHibernateEntity<Long> {
+public class PropertyEntity extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
@@ -32,6 +33,9 @@ public class Helicopter extends AbstractHibernateEntity<Long> {
     private Long id;
 
     private String name;
+
+    @Lob
+    private String data;
 
     @Override
     public int hashCode() {
@@ -44,5 +48,5 @@ public class Helicopter extends AbstractHibernateEntity<Long> {
                     .add("name", name);
     }
 
-    private static final long serialVersionUID = -4578683190280228574L;
+    private static final long serialVersionUID = -8261525789684361722L;
 }

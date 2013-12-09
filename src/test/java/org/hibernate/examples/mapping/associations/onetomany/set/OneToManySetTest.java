@@ -54,6 +54,7 @@ public class OneToManySetTest extends AbstractJpaTest {
     public void productTest() {
 
         ProductItem item = new ProductItem();
+        item.setName("item");
 
         ProductImage image1 = new ProductImage();
         image1.setItem(item);

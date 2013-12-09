@@ -12,8 +12,8 @@
 
 	<properties>
 		<jdk.version>1.6</jdk.version>
-		<hibernate.version>4.2.7.SP1</hibernate.version>
-		<springframework.version>3.2.5.RELEASE</springframework.version>
+        <hibernate.version>4.2.8.Final</hibernate.version>
+        <springframework.version>3.2.5.RELEASE</springframework.version>
 		<querydsl.version>3.2.4</querydsl.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,8 +39,16 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Logging -->
-		<dependency>
+        <!-- Javassist -->
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
+
+
+        <!-- Logging -->
+        <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.5</version>
@@ -186,9 +194,16 @@
 			<version>2.3.0</version>
 			<scope>provided</scope>
 		</dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.27</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- Memcached for Hibernate 2nd Cache -->
-		<dependency>
+
+        <!-- Memcached for Hibernate 2nd Cache -->
+        <dependency>
 			<groupId>com.googlecode.xmemcached</groupId>
 			<artifactId>xmemcached</artifactId>
 			<version>1.4.3</version>
@@ -300,6 +315,32 @@
 				</executions>
 			</plugin>
 
-		</plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <tasks>
+                        <taskdef name="instrument" classname="org.hibernate.tool.instrument.javassist.InstrumentTask">
+                            <classpath>
+                                <path refid="maven.runtime.classpath"/>
+                                <path refid="maven.plugin.classpath"/>
+                            </classpath>
+                        </taskdef>
+                        <instrument verbose="false">
+                            <fileset dir="${project.build.outputDirectory}">
+                                <include name="**/domain/**/*.class"/>
+                            </fileset>
+                        </instrument>
+                    </tasks>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 </project>

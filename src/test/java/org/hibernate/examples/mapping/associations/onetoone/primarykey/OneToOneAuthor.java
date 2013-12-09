@@ -1,15 +1,15 @@
 package org.hibernate.examples.mapping.associations.onetoone.primarykey;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
 
-import javax.persistence.CascadeType;
 import javax.persistence.*;
-import javax.persistence.Entity;
 
 /**
  * org.hibernate.examples.mapping.associations.onetoone.primarykey.OneToOneAuthor
@@ -18,7 +18,6 @@ import javax.persistence.Entity;
  * @since 2013. 11. 29. 오후 3:18
  */
 @Entity
-@Proxy
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -28,18 +27,19 @@ public class OneToOneAuthor extends AbstractHibernateEntity<Long> {
     @Id
     @GeneratedValue
     @Column(name = "authorId")
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String name;
 
-    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)   // eager면 outer join을 하고, lazy면 따로 로드합니다.
+    // FetchType.LAZY 이므로 따로 로드합니다.
+    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
-    @LazyToOne(LazyToOneOption.PROXY)
     private OneToOneBiography biography = new OneToOneBiography(this);
 
+    // FetchType.EAGER 이므로 left outer join 으로 로드합니다.
     @OneToOne(cascade = { CascadeType.ALL })
     @PrimaryKeyJoinColumn
-    @LazyToOne(LazyToOneOption.PROXY)
     private OneToOnePicture picture = new OneToOnePicture(this);
 
     @Override

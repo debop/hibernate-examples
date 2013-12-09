@@ -1,4 +1,4 @@
-package org.hibernate.examples;
+package org.hibernate.examples.config;
 
 import org.hibernate.cfg.Environment;
 import org.hibernate.examples.hibernate.config.AbstractHSqlHibernateConfiguration;
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 /**
- * org.hibernate.examples.HibernateHSqlConfiguration
+ * org.hibernate.examples.config.HibernateHSqlConfiguration
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 11. 28. 오후 3:39

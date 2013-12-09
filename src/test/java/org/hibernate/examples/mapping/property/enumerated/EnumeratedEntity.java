@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.property.enumerated;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -25,6 +26,7 @@ public class EnumeratedEntity extends AbstractHibernateEntity<Long> {
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     // Enumerated 를 쓰면 Enum 값을 원하는 Ordinal 수형으로 DB에 저장하고, 반환받을 수 있다. 대부분 String 을 사용한다.

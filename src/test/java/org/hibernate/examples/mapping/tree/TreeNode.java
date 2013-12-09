@@ -1,5 +1,6 @@
 package org.hibernate.examples.mapping.tree;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.*;
@@ -30,6 +31,7 @@ public class TreeNode extends AbstractHibernateEntity<Long> implements Hibernate
 
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.PROTECTED)
     private Long id;
 
     private String title;

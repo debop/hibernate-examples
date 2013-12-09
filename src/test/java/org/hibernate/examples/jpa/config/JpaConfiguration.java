@@ -1,6 +1,6 @@
 package org.hibernate.examples.jpa.config;
 
-import org.hibernate.examples.JpaHSqlConfiguration;
+import org.hibernate.examples.config.JpaHSqlConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

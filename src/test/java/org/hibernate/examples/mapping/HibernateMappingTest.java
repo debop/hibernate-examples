@@ -2,7 +2,7 @@ package org.hibernate.examples.mapping;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
-import org.hibernate.examples.HibernateHSqlConfiguration;
+import org.hibernate.examples.config.HibernateHSqlConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
