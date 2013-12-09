@@ -18,7 +18,7 @@ import javax.persistence.*;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 2013. 12. 3. 오전 12:31
  */
-@Entity(name = "UnionSubclass_BillingBase")
+@MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DynamicInsert
 @DynamicUpdate
