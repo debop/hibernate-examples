@@ -46,4 +46,22 @@ public class UserTypeTest extends AbstractJpaTest {
         assertThat(loaded.getRange1()).isEqualTo(entity.getRange1());
         assertThat(loaded.getRange2()).isEqualTo(entity.getRange2());
     }
+
+    @Test
+    public void jodaDateTimeTZUserTypeTest() {
+        JodaDateTimeTZEntity entity = new JodaDateTimeTZEntity();
+
+        entity.setStartTZ(DateTime.now().withTimeAtStartOfDay());
+        entity.setEndTZ(entity.getStartTZ().plusDays(1));
+
+        em.persist(entity);
+        em.flush();
+        em.clear();
+
+        JodaDateTimeTZEntity loaded = em.find(JodaDateTimeTZEntity.class, entity.getId());
+
+        assertThat(loaded).isEqualTo(entity);
+        assertThat(loaded.getStartTZ()).isEqualTo(entity.getStartTZ());
+        assertThat(loaded.getEndTZ()).isEqualTo(entity.getEndTZ());
+    }
 }
