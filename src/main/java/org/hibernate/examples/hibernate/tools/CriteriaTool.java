@@ -40,9 +40,9 @@ public final class CriteriaTool {
 
         for (org.springframework.data.domain.Sort.Order order : sort) {
             if (order.getDirection() == Sort.Direction.ASC)
-                Order.asc(order.getProperty());
+                orders.add(Order.asc(order.getProperty()));
             else
-                Order.desc(order.getProperty());
+                orders.add(Order.desc(order.getProperty()));
         }
 
         return orders;
