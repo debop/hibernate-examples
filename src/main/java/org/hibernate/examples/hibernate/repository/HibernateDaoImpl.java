@@ -122,7 +122,7 @@ public class HibernateDaoImpl implements HibernateDao {
     @Override
     public <T> List<T> findAll(Class<T> clazz, Order... orders) {
         if (orders == null || orders.length == 0) {
-            return (List<T>) getSession().createQuery("from " + clazz.getName()).list();
+            return (List<T>) getSession().createCriteria(clazz).list();
         } else {
             Criteria criteria = getSession().createCriteria(clazz);
             return (List<T>) HibernateTool.addOrders(criteria, orders).list();
@@ -131,11 +131,10 @@ public class HibernateDaoImpl implements HibernateDao {
 
     @Override
     public <T> List<T> findAll(Class<T> clazz, int firstResult, int maxResults, Order... orders) {
+        Criteria criteria = getSession().createCriteria(clazz);
         if (orders == null || orders.length == 0) {
-            Query query = getSession().createQuery("from " + clazz.getName());
-            return (List<T>) HibernateTool.setPaging(query, firstResult, maxResults).list();
+            return (List<T>) HibernateTool.setPaging(criteria, firstResult, maxResults).list();
         } else {
-            Criteria criteria = getSession().createCriteria(clazz);
             criteria = HibernateTool.addOrders(criteria, orders);
             criteria = HibernateTool.setPaging(criteria, firstResult, maxResults);
             return (List<T>) criteria.list();
