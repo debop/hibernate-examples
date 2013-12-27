@@ -507,7 +507,7 @@ public class HibernateDaoImpl implements HibernateDao {
     @Override
     public <P> List<P> reportList(Class<P> projectClass, ProjectionList projectionList, Criteria criteria) {
         Criteria report = buildProjectionCriteria(projectClass, criteria, projectionList, false);
-        return (List<P>) report.uniqueResult();
+        return (List<P>) report.list();
     }
 
     @Override
