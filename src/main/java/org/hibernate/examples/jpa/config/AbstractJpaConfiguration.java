@@ -121,13 +121,13 @@ public abstract class AbstractJpaConfiguration {
      */
     @Bean
     public EntityManagerFactory entityManagerFactory() throws IOException {
-        AbstractJpaConfiguration.log.info("EntityManagerFactory Bean을 생성합니다...");
+        log.info("EntityManagerFactory Bean을 생성합니다...");
 
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 
         String[] packagenames = getMappedPackageNames();
         if (packagenames != null && packagenames.length > 0) {
-            AbstractJpaConfiguration.log.debug("JPA용 entity를 scan합니다. packages=[{}]", packagenames);
+            log.debug("JPA용 entity를 scan합니다. packages=[{}]", packagenames);
             factoryBean.setPackagesToScan(packagenames);
         }
 
@@ -141,7 +141,7 @@ public abstract class AbstractJpaConfiguration {
         setupEntityManagerFactory(factoryBean);
 
         factoryBean.afterPropertiesSet();
-        AbstractJpaConfiguration.log.info("EntityManagerFactory Bean을 생성했습니다!!!");
+        log.info("EntityManagerFactory Bean을 생성했습니다!!!");
 
         return factoryBean.getObject();
     }
