@@ -3,8 +3,6 @@ package org.hibernate.examples.mapping.associations.join;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 import org.hibernate.examples.model.AbstractHibernateEntity;
 import org.hibernate.examples.utils.HashTool;
 import org.hibernate.examples.utils.ToStringHelper;
@@ -47,15 +45,27 @@ public class JoinCustomer extends AbstractHibernateEntity<Long> {
     )
     private JoinAddress joinAddress = new JoinAddress();
 
+    @Setter(AccessLevel.PROTECTED)
     @Temporal(TemporalType.TIMESTAMP)
-    @Generated(GenerationTime.INSERT)
+    // @org.hibernate.annotations.Generated(org.hibernate.annotations.GenerationTime.INSERT)
     @Column(name = "CreatedAt", insertable = false, updatable = false)
     private Date createdAt;
 
+    @Setter(AccessLevel.PROTECTED)
     @Temporal(TemporalType.TIMESTAMP)
-    @Generated(GenerationTime.ALWAYS)
+    // @org.hibernate.annotations.Generated(org.hibernate.annotations.GenerationTime.ALWAYS)
     @Column(name = "UpdatedAt", insertable = false, updatable = false)
     private Date updatedAt;
+
+    @PrePersist
+    private void onPrePersist() {
+        createdAt = new Date();
+    }
+
+    @PreUpdate
+    private void onPreUpdate() {
+        updatedAt = new Date();
+    }
 
     @Override
     public int hashCode() {

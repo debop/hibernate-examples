@@ -5,6 +5,7 @@ import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.event.spi.PostLoadEvent;
 import org.hibernate.event.spi.PostLoadEventListener;
 import org.hibernate.examples.model.PersistentObject;
+import org.hibernate.persister.entity.EntityPersister;
 
 /**
  * org.hibernate.examples.hibernate.listener.PersistentObjectListener
@@ -19,6 +20,12 @@ public class PersistentObjectListener implements PostLoadEventListener, PostInse
         if (event.getEntity() instanceof PersistentObject) {
             ((PersistentObject) event.getEntity()).onSave();
         }
+    }
+
+    // hibernate-core 4.3.0.Final 이후에 추가됨
+    @Override
+    public boolean requiresPostCommitHanding(EntityPersister entityPersister) {
+        return false;
     }
 
     @Override
