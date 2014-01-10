@@ -61,6 +61,24 @@ public class CompositeIdTest extends AbstractJpaTest {
         assertThat(loaded).isNotNull();
         assertThat(loaded.getBrand()).isNotNull();
         assertThat(loaded.getBrand()).isEqualTo("Kia");
+
+        loaded.setSerialNo("5081");
+        em.persist(loaded);
+        em.flush();
+        em.clear();
+
+        loaded = em.find(IdClassCar.class, new CarIdentifier("Kia", 2012));
+
+        assertThat(loaded).isNotNull();
+        assertThat(loaded.getBrand()).isNotNull();
+        assertThat(loaded.getBrand()).isEqualTo("Kia");
+
+        em.remove(loaded);
+        em.flush();
+        em.clear();
+
+        loaded = em.find(IdClassCar.class, new CarIdentifier("Kia", 2012));
+        assertThat(loaded).isNull();
     }
 
     @Test
