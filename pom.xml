@@ -26,6 +26,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+
 		<!-- Hibernate EntityManager for JPA -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -38,6 +39,12 @@
 			<version>${hibernate.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>com.github.debop</groupId>
+            <artifactId>hibernate-redis</artifactId>
+            <version>1.5.8</version>
+        </dependency>
 
         <!-- Javassist -->
         <dependency>
@@ -243,6 +250,18 @@
 		</dependency>
 
 	</dependencies>
+
+    <repositories>
+        <repository>
+            <id>debop-snapshots</id>
+            <url>https://github.com/debop/debop-maven-repo/raw/master/snapshots</url>
+        </repository>
+        <repository>
+            <id>debop-releases</id>
+            <url>https://github.com/debop/debop-maven-repo/raw/master/releases</url>
+        </repository>
+
+    </repositories>
 
 	<build>
 		<plugins>
